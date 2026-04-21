@@ -1,10 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Enable React strict mode for better development experience
   reactStrictMode: true,
   
-  // Configure images (using unoptimized for static export compatibility)
+  // Exportar como sitio estático para Cloudflare Pages
+  output: 'export',
+  distDir: 'dist',
+  
   images: {
     unoptimized: true,
   },
