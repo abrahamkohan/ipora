@@ -1,7 +1,7 @@
 "use client";
 
 import { CopyContent } from "@/lib/copy";
-import { AppMockup } from "./app-mockup";
+import { AppMockup } from "@/components/app-mockup";
 
 interface HeroProps {
   lang: string;
