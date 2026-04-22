@@ -25,9 +25,11 @@ jobs:
       
       - name: Install dependencies
         run: npm ci
+        working-directory: ./ipora-landing
       
       - name: Build project
         run: npm run build
+        working-directory: ./ipora-landing
       
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@v1
@@ -35,5 +37,5 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ce400762b864fb17992fe4f29c693ffa
           projectName: ipora
-          directory: dist
+          directory: ipora-landing/dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}

@@ -13,7 +13,7 @@ export function Hero({ lang, copy, onMenu }: HeroProps) {
   const hero = copy.hero;
 
   return (
-    <section className="relative pt-16 md:pt-24 pb-12 md:pb-20 overflow-hidden">
+    <section className="relative pt-16 md:pt-24 pb-8 md:pb-20 overflow-hidden">
       {/* Background gradient accent */}
       <div 
         className="absolute top-0 right-0 w-full md:w-1/2 h-full opacity-30 pointer-events-none"
@@ -24,7 +24,7 @@ export function Hero({ lang, copy, onMenu }: HeroProps) {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative">
         {/* Navigation */}
-        <nav className="flex items-center justify-between mb-12 md:mb-16">
+        <nav className="flex items-center justify-between mb-8 md:mb-16">
           <a 
             href="#" 
             className="font-display font-extrabold text-xl md:text-2xl text-primary tracking-tight"
@@ -64,20 +64,79 @@ export function Hero({ lang, copy, onMenu }: HeroProps) {
           </button>
         </nav>
 
-        {/* Hero content - Mobile: stacked, Desktop: 2 columns */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        {/* MOBILE: Stack vertical simplificado */}
+        <div className="lg:hidden">
+          {/* Título - Lo más importante primero */}
+          <h1 className="font-display font-extrabold text-[clamp(2.2rem,7vw,3rem)] leading-[0.95] tracking-tight mb-4">
+            {hero.title.map((t, i) => (
+              <span 
+                key={i} 
+                className="block"
+                style={{ color: i === hero.title.length - 1 ? "var(--highlight)" : "var(--primary)" }}
+              >
+                {t}
+              </span>
+            ))}
+          </h1>
+
+          {/* Una sola línea clara - Sin subhead complejo */}
+          <p className="text-base text-text-mid leading-relaxed mb-5 max-w-lg">
+            Diseñamos sistemas que organizan tu operación y te permiten crecer.
+          </p>
+
+          {/* CTA - Acción inmediata */}
+          <div className="flex flex-col gap-3 mb-8">
+            <a 
+              href="#contacto"
+              className="inline-flex items-center justify-center gap-2 bg-primary text-white px-6 py-4 text-sm font-bold uppercase tracking-wider rounded-md hover:bg-primary-2 active:scale-[0.98] transition-all"
+            >
+              {hero.cta}
+              <span>→</span>
+            </a>
+            <a 
+              href="#proceso"
+              className="inline-flex items-center justify-center gap-2 bg-transparent text-text px-6 py-3 text-sm font-semibold tracking-wide rounded-md hover:text-highlight transition-all"
+            >
+              {hero.cta2}
+              <span>→</span>
+            </a>
+          </div>
+
+          {/* Imagen debajo del CTA - Jerarquía correcta */}
+          <div className="mb-8">
+            <div className="w-full max-w-sm mx-auto">
+              <AppMockup lang={lang} copy={copy} />
+            </div>
+            <p className="mt-3 text-[10px] tracking-widest uppercase text-text-muted text-center font-semibold">
+              {hero.mockupLabel}
+            </p>
+          </div>
+
+          {/* Trust badges simplificados */}
+          <div className="flex flex-wrap justify-center gap-x-4 gap-y-1 mb-6">
+            {hero.trustItems.slice(0, 2).map((item) => (
+              <div key={item} className="flex items-center gap-1.5 text-xs text-text font-medium">
+                <span className="text-highlight">✔</span>
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* DESKTOP: Layout original de 2 columnas */}
+        <div className="hidden lg:grid grid-cols-2 gap-16 items-center">
           {/* Left column - Text */}
-          <div className="order-2 lg:order-1">
+          <div>
             {/* Eyebrow */}
-            <div className="flex items-center gap-2.5 mb-5 md:mb-6">
+            <div className="flex items-center gap-2.5 mb-6">
               <span className="w-7 h-0.5 bg-highlight" />
-              <span className="text-xs md:text-sm tracking-widest uppercase text-text-muted font-medium">
+              <span className="text-sm tracking-widest uppercase text-text-muted font-medium">
                 {hero.eyebrow}
               </span>
             </div>
 
-            {/* Title - Mobile optimized size */}
-            <h1 className="font-display font-extrabold text-[clamp(2.5rem,8vw,4.5rem)] leading-[0.95] tracking-tight mb-5 md:mb-6">
+            {/* Title */}
+            <h1 className="font-display font-extrabold text-[clamp(3rem,5vw,4.5rem)] leading-[0.95] tracking-tight mb-6">
               {hero.title.map((t, i) => (
                 <span 
                   key={i} 
@@ -90,32 +149,32 @@ export function Hero({ lang, copy, onMenu }: HeroProps) {
             </h1>
 
             {/* Subhead */}
-            <p className="font-display font-semibold text-lg md:text-xl md:text-[22px] text-primary leading-snug mb-4 md:mb-5 max-w-xl tracking-tight">
+            <p className="font-display font-semibold text-xl md:text-[22px] text-primary leading-snug mb-5 max-w-xl tracking-tight">
               {hero.subhead}
             </p>
 
             {/* Lede */}
-            <p className="text-base md:text-lg text-text-mid leading-relaxed mb-4 md:mb-5 max-w-lg">
+            <p className="text-lg text-text-mid leading-relaxed mb-5 max-w-lg">
               {hero.lede}
             </p>
 
-            {/* Pain point - with left border */}
-            <p className="text-sm md:text-base text-text-muted leading-relaxed mb-6 md:mb-8 pl-4 border-l-2 border-highlight italic">
+            {/* Pain point */}
+            <p className="text-base text-text-muted leading-relaxed mb-8 pl-4 border-l-2 border-highlight italic">
               {hero.pain}
             </p>
 
-            {/* CTAs - Stack on mobile, row on larger screens */}
-            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 mb-6 md:mb-8">
+            {/* CTAs */}
+            <div className="flex flex-row gap-4 mb-8">
               <a 
                 href="#contacto"
-                className="inline-flex items-center justify-center gap-2 bg-primary text-white px-6 md:px-7 py-4 text-sm font-bold uppercase tracking-wider rounded-md hover:bg-primary-2 active:scale-[0.98] transition-all"
+                className="inline-flex items-center justify-center gap-2 bg-primary text-white px-7 py-4 text-sm font-bold uppercase tracking-wider rounded-md hover:bg-primary-2 active:scale-[0.98] transition-all"
               >
                 {hero.cta}
                 <span>→</span>
               </a>
               <a 
                 href="#proceso"
-                className="inline-flex items-center justify-center gap-2 bg-transparent text-text px-6 md:px-7 py-4 text-sm font-bold uppercase tracking-wider rounded-md border border-border-dark hover:border-highlight hover:text-highlight active:scale-[0.98] transition-all"
+                className="inline-flex items-center justify-center gap-2 bg-transparent text-text px-7 py-4 text-sm font-bold uppercase tracking-wider rounded-md border border-border-dark hover:border-highlight hover:text-highlight active:scale-[0.98] transition-all"
               >
                 {hero.cta2}
                 <span>→</span>
@@ -123,14 +182,14 @@ export function Hero({ lang, copy, onMenu }: HeroProps) {
             </div>
 
             {/* Social proof */}
-            <p className="text-xs md:text-sm text-text-muted mb-6 md:mb-8 max-w-md">
+            <p className="text-sm text-text-muted mb-8 max-w-md">
               {hero.social}
             </p>
 
-            {/* Trust badges - Horizontal scroll on mobile */}
-            <div className="flex flex-wrap gap-x-6 gap-y-2 md:gap-x-8">
+            {/* Trust badges */}
+            <div className="flex flex-wrap gap-x-8">
               {hero.trustItems.map((item) => (
-                <div key={item} className="flex items-center gap-2 text-xs md:text-sm text-text font-semibold">
+                <div key={item} className="flex items-center gap-2 text-sm text-text font-semibold">
                   <span className="text-highlight text-base">✔</span>
                   {item}
                 </div>
@@ -139,11 +198,11 @@ export function Hero({ lang, copy, onMenu }: HeroProps) {
           </div>
 
           {/* Right column - Mockup */}
-          <div className="order-1 lg:order-2 flex flex-col items-center">
-            <div className="w-full max-w-md lg:max-w-none">
+          <div className="flex flex-col items-center">
+            <div className="w-full max-w-none">
               <AppMockup lang={lang} copy={copy} />
             </div>
-            <p className="mt-4 text-[10px] md:text-xs tracking-widest uppercase text-text-muted text-center font-semibold">
+            <p className="mt-4 text-xs tracking-widest uppercase text-text-muted text-center font-semibold">
               {hero.mockupLabel}
             </p>
           </div>
