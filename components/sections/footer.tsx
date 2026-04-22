@@ -10,11 +10,11 @@ export function Footer({ copy }: FooterProps) {
   const f = copy.footer;
 
   return (
-    <footer className="bg-white border-t border-border py-6 md:py-10">
-      <div className="max-w-7xl mx-auto px-5 md:px-6 lg:px-8 xl:px-12">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4">
-          {/* Left - Logo and tagline */}
-          <div className="flex flex-col md:flex-row items-center gap-1.5 md:gap-4">
+    <footer className="bg-white border-t border-border py-5 md:py-10 overflow-hidden">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-5 lg:px-8 xl:px-12">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-2 md:gap-4">
+          {/* Logo and tagline */}
+          <div className="flex flex-col md:flex-row items-center gap-1 md:gap-4">
             <span className="font-display font-bold text-base md:text-lg text-primary">
               ipora<span className="text-highlight">.</span>
             </span>
@@ -23,7 +23,7 @@ export function Footer({ copy }: FooterProps) {
             </span>
           </div>
 
-          {/* Right - Copyright */}
+          {/* Copyright */}
           <div className="text-[11px] md:text-xs text-text-muted/70">
             {f.rights}
           </div>

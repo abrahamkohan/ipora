@@ -18,8 +18,8 @@ export function Contact({ copy }: ContactProps) {
   };
 
   return (
-    <section id="contacto" className="py-16 md:py-32 bg-primary text-white relative overflow-hidden">
-      {/* Subtle background pattern */}
+    <section id="contacto" className="py-12 md:py-32 bg-primary text-white relative overflow-hidden">
+      {/* Background pattern */}
       <div 
         className="absolute inset-0 opacity-5"
         style={{
@@ -28,26 +28,26 @@ export function Contact({ copy }: ContactProps) {
         }}
       />
 
-      <div className="max-w-7xl mx-auto px-5 md:px-6 lg:px-8 xl:px-12 relative">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-5 lg:px-8 xl:px-12 relative">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20">
           {/* Left column - Copy */}
           <div>
             <div className="flex items-center gap-2 mb-3">
               <span className="w-5 h-px bg-white/40" />
-              <span className="text-[11px] tracking-widest uppercase text-white/60 font-semibold">
+              <span className="text-[11px] tracking-wider uppercase text-white/60 font-semibold">
                 {c.eyebrow}
               </span>
             </div>
             <h2 className="font-display font-extrabold text-3xl md:text-5xl lg:text-6xl text-white tracking-tight leading-[0.95] mb-4 md:mb-6">
               {c.title}
             </h2>
-            <p className="text-[15px] md:text-lg lg:text-xl text-white/70 leading-relaxed max-w-md mb-8 md:mb-12">
+            <p className="text-sm md:text-lg lg:text-xl text-white/70 leading-relaxed max-w-md mb-8 md:mb-12">
               {c.subtitle}
             </p>
 
-            {/* Email section */}
+            {/* Email */}
             <div className="pt-6 border-t border-white/15">
-              <div className="text-[11px] tracking-widest uppercase text-white/50 font-semibold mb-2">
+              <div className="text-[11px] tracking-wider uppercase text-white/50 font-semibold mb-2">
                 {c.reachLabel}
               </div>
               <a 
@@ -60,9 +60,9 @@ export function Contact({ copy }: ContactProps) {
           </div>
 
           {/* Right column - Form */}
-          <div className="bg-white/5 border border-white/10 p-5 md:p-8 lg:p-10 rounded-xl backdrop-blur-sm">
+          <div className="bg-white/5 border border-white/10 p-4 md:p-8 lg:p-10 rounded-xl backdrop-blur-sm">
             {sent ? (
-              <div className="py-10 md:py-16 text-center">
+              <div className="py-8 md:py-16 text-center">
                 <div className="w-14 h-14 md:w-20 md:h-20 mx-auto mb-5 rounded-full bg-highlight/20 flex items-center justify-center">
                   <svg className="w-7 h-7 md:w-10 md:h-10 text-highlight" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -76,23 +76,23 @@ export function Contact({ copy }: ContactProps) {
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
                 {/* Name */}
                 <div>
-                  <label className="block text-[11px] tracking-widest uppercase text-white/50 font-semibold mb-2">
+                  <label className="block text-[11px] tracking-wider uppercase text-white/50 font-semibold mb-2">
                     {c.name}
                   </label>
                   <input
                     type="text"
                     required
-                    className="w-full bg-transparent border-0 border-b border-white/30 text-white text-[15px] md:text-base py-2.5 focus:outline-none focus:border-highlight transition-colors placeholder:text-white/30"
+                    className="w-full bg-transparent border-0 border-b border-white/30 text-white text-sm md:text-base py-2.5 focus:outline-none focus:border-highlight transition-colors placeholder:text-white/30"
                     placeholder="Tu nombre"
                   />
                 </div>
 
                 {/* Email */}
                 <div>
-                  <label className="block text-[11px] tracking-widest uppercase text-white/50 font-semibold mb-2">
+                  <label className="block text-[11px] tracking-wider uppercase text-white/50 font-semibold mb-2">
                     {c.email}
                   </label>
                   <input
@@ -100,32 +100,32 @@ export function Contact({ copy }: ContactProps) {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full bg-transparent border-0 border-b border-white/30 text-white text-[15px] md:text-base py-2.5 focus:outline-none focus:border-highlight transition-colors placeholder:text-white/30"
+                    className="w-full bg-transparent border-0 border-b border-white/30 text-white text-sm md:text-base py-2.5 focus:outline-none focus:border-highlight transition-colors placeholder:text-white/30"
                     placeholder="vos@empresa.com"
                   />
                 </div>
 
                 {/* Company */}
                 <div>
-                  <label className="block text-[11px] tracking-widest uppercase text-white/50 font-semibold mb-2">
+                  <label className="block text-[11px] tracking-wider uppercase text-white/50 font-semibold mb-2">
                     {c.company}
                   </label>
                   <input
                     type="text"
-                    className="w-full bg-transparent border-0 border-b border-white/30 text-white text-[15px] md:text-base py-2.5 focus:outline-none focus:border-highlight transition-colors placeholder:text-white/30"
+                    className="w-full bg-transparent border-0 border-b border-white/30 text-white text-sm md:text-base py-2.5 focus:outline-none focus:border-highlight transition-colors placeholder:text-white/30"
                     placeholder="Nombre de tu empresa"
                   />
                 </div>
 
                 {/* Message */}
                 <div>
-                  <label className="block text-[11px] tracking-widest uppercase text-white/50 font-semibold mb-2">
+                  <label className="block text-[11px] tracking-wider uppercase text-white/50 font-semibold mb-2">
                     {c.message}
                   </label>
                   <textarea
                     required
                     rows={3}
-                    className="w-full bg-transparent border-0 border-b border-white/30 text-white text-[15px] md:text-base py-2.5 focus:outline-none focus:border-highlight transition-colors placeholder:text-white/30 resize-none"
+                    className="w-full bg-transparent border-0 border-b border-white/30 text-white text-sm md:text-base py-2.5 focus:outline-none focus:border-highlight transition-colors placeholder:text-white/30 resize-none"
                     placeholder="Contanos tu situación..."
                   />
                 </div>
