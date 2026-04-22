@@ -10,50 +10,102 @@ export function Services({ copy }: ServicesProps) {
   const s = copy.services;
 
   return (
-    <section id="enfoque" className="py-20 md:py-32 bg-bg2 border-y border-border">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
-        {/* Header - Stack on mobile */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12 mb-12 md:mb-16">
-          <div className="md:col-span-1">
-            <div className="flex items-center gap-2 mb-3">
-              <span className="text-[10px] md:text-xs tracking-widest uppercase text-highlight font-bold">
-                {s.eyebrow}
-              </span>
-            </div>
-            <h2 className="font-display font-extrabold text-3xl md:text-4xl lg:text-5xl text-primary tracking-tight leading-tight">
-              {s.title}
-            </h2>
+    <section id="enfoque" className="py-16 md:py-32 bg-bg2 border-y border-border">
+      <div className="max-w-7xl mx-auto px-5 md:px-6 lg:px-8 xl:px-12">
+        {/* Header */}
+        <div className="mb-10 md:mb-16 md:text-center md:max-w-3xl md:mx-auto">
+          <div className="flex items-center gap-2 mb-3 md:justify-center">
+            <span className="w-5 h-px bg-highlight/60 md:w-7" />
+            <span className="text-[11px] tracking-widest uppercase text-highlight font-semibold">
+              {s.eyebrow}
+            </span>
           </div>
-          <div className="md:col-span-2 flex items-end">
-            <p className="text-lg md:text-xl text-text-mid leading-relaxed max-w-2xl">
-              {s.subtitle}
-            </p>
-          </div>
+          <h2 className="font-display font-extrabold text-2xl md:text-4xl lg:text-5xl text-primary tracking-tight leading-tight mb-3 md:mb-5">
+            {s.title}
+          </h2>
+          <p className="text-[15px] md:text-xl text-text-mid leading-relaxed max-w-2xl">
+            {s.subtitle}
+          </p>
         </div>
 
-        {/* Service cards - Full width cards on mobile */}
-        <div className="grid grid-cols-1 md:grid-cols-3 border-l border-t border-border">
+        {/* MOBILE: Lista vertical consistente */}
+        <div className="lg:hidden space-y-4">
           {s.items.map((item, i) => (
             <div 
               key={i} 
-              className="p-6 md:p-8 lg:p-10 bg-white border-r border-b border-border group hover:shadow-lg transition-shadow"
+              className="rounded-xl p-5 bg-white border border-border/50"
+              style={{ boxShadow: '0 1px 2px rgba(0,0,0,0.02)' }}
             >
+              {/* Número de fondo - sutil */}
+              <span 
+                className="absolute top-2 right-3 font-display font-extrabold text-5xl leading-none pointer-events-none select-none"
+                style={{ 
+                  color: 'var(--primary)',
+                  opacity: 0.04
+                }}
+              >
+                {item.n}
+              </span>
+
+              {/* Tag y número */}
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-[11px] tracking-wider uppercase text-highlight font-semibold">
+                  {item.tag}
+                </span>
+                <span className="w-4 h-px bg-border" />
+                <span className="text-[11px] text-text-muted font-medium">
+                  {item.n}
+                </span>
+              </div>
+
+              {/* Título */}
+              <h3 className="font-display font-bold text-lg text-primary mb-2 tracking-tight">
+                {item.title}
+              </h3>
+
+              {/* Descripción */}
+              <p className="text-[14px] text-text-mid leading-relaxed">
+                {item.body}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* DESKTOP: Grid 3 columnas */}
+        <div className="hidden lg:grid grid-cols-3 gap-6">
+          {s.items.map((item, i) => (
+            <div 
+              key={i} 
+              className="rounded-xl p-6 bg-white border border-border/50 transition-all duration-200 hover:-translate-y-1"
+              style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.03)' }}
+            >
+              {/* Número de fondo */}
+              <span 
+                className="absolute top-3 right-4 font-display font-extrabold text-5xl leading-none pointer-events-none select-none"
+                style={{ 
+                  color: 'var(--primary)',
+                  opacity: 0.04
+                }}
+              >
+                {item.n}
+              </span>
+
               {/* Tag */}
-              <div className="flex items-center gap-2 mb-4 md:mb-5">
-                <span className="text-highlight font-bold text-xs">{item.n}</span>
-                <span className="w-5 h-px bg-border" />
-                <span className="text-[10px] md:text-xs tracking-widest uppercase text-text-muted font-bold">
+              <div className="flex items-center gap-2 mb-4">
+                <span className="text-highlight font-bold text-sm">{item.n}</span>
+                <span className="w-4 h-px bg-border" />
+                <span className="text-[11px] tracking-wider uppercase text-text-muted font-semibold">
                   {item.tag}
                 </span>
               </div>
 
-              {/* Title */}
-              <h3 className="font-display font-bold text-xl md:text-2xl lg:text-[28px] text-primary mb-3 md:mb-4 tracking-tight leading-tight">
+              {/* Título */}
+              <h3 className="font-display font-bold text-xl text-primary mb-3 tracking-tight">
                 {item.title}
               </h3>
 
               {/* Body */}
-              <p className="text-sm md:text-base text-text-mid leading-relaxed">
+              <p className="text-sm text-text-mid leading-relaxed">
                 {item.body}
               </p>
             </div>
